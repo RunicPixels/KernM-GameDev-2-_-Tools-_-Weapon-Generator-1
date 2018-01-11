@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponParts : MonoBehaviour {
+public class WeaponParts {
     public string folder;
     public Texture2D[] parts;
 	// Use this for initialization
