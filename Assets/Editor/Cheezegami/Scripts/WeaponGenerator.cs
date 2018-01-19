@@ -5,7 +5,6 @@ using UnityEditor;
 using RubicalMe;
 
 namespace Cheezegami {
-    [CustomEditor(typeof(Generator))]
     public class WeaponGenerator {
 
         public WeaponGenerator() {

@@ -5,7 +5,6 @@ using UnityEditor;
 using RubicalMe;
 
 namespace Cheezegami {
-    [CustomEditor(typeof(WeapGenEditor))]
     public class WeapGenEditor : EditorWindow_EasySimpleDisplay {
         private bool seeded = false;
 
