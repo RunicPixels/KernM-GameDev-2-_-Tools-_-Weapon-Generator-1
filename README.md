@@ -1,4 +1,4 @@
-# KernM-GameDev-2-_-Tools-_-Weapon-Generator-1
+# Kernmodule Game Development 2 : Tools - Weapon Generator
 Credits Reserved to
 https://github.com/CDeWijs (Not really used, more for debugging and testing her part) and
 https://github.com/RubicalMe (Made the wonderful Editor Window preview my base class extends.)
