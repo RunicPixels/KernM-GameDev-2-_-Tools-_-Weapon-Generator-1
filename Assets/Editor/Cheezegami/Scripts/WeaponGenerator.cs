@@ -7,21 +7,14 @@ using RubicalMe;
 namespace Cheezegami {
     public class WeaponGenerator {
 
-        public WeaponGenerator() {
-        }
         public string weaponName = "Weapon";
-
         public Texture2D blade, guard, handle;
         public Texture2D destTex;
-
-        private bool seeded = false;
-
-        public string path;
-
         public string seed = "";
 
+        private bool seeded = false;
+        private string path;
         private int width, height;
-
         private Vector2Int offsetBlade, offsetGuard, offsetHandle;
 
 

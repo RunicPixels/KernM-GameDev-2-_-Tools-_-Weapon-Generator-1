@@ -6,21 +6,22 @@ using RubicalMe;
 
 namespace Cheezegami {
     public class WeapGenEditor : EditorWindow_EasySimpleDisplay {
-        private bool seeded = false;
 
-        private readonly static string  bladeFolder = "Blades",
-                                        guardFolder = "Guards",
-                                        handleFolder = "Handles";
-                        
+        public static Dictionary<string, string> folders = new Dictionary<string, string>();
         public bool randBlade, randGuard, randHandle;
         public bool randBladeHue, randGuardHue, randHandleHue;
-        private bool editStats = true;
 
+        private bool editStats = true;
+        private bool seeded = false;
         private Texture2DFinder finder = new Texture2DFinder();
         private WeaponGenerator generator = new WeaponGenerator();
 
         [MenuItem("Tools/Cheezegami/Weapon Generator")]
         private static void Init() {
+            folders.Add("bladeFolder", "Blades");
+            folders.Add("guardFolder", "Guards");
+            folders.Add("handleFolder", "Handles");
+
             // Get existing open window, or if none make a new one
             WeapGenEditor window = (WeapGenEditor)GetWindow(typeof(WeapGenEditor), true, "Weapon Generator");
             window.Show();
@@ -28,6 +29,11 @@ namespace Cheezegami {
         }
 
         public override void OnGUI() {
+            ShowGUIContent();
+            base.OnGUI();
+        }
+
+        private void ShowGUIContent() {
             int rightOffset = 120;
             int spacing = 66;
             int margin = 20;
@@ -76,9 +82,9 @@ namespace Cheezegami {
             if (GUILayout.Button("Generate Item")) {
                 if (seeded) UnityEngine.Random.InitState(generator.seed.GetHashCode());
 
-                if (randBlade) generator.blade = finder.FindRandomTexture(bladeFolder);
-                if (randGuard) generator.guard = finder.FindRandomTexture(guardFolder);
-                if (randHandle) generator.handle = finder.FindRandomTexture(handleFolder);
+                if (randBlade) generator.blade = finder.FindRandomTexture(folders["blades"]);
+                if (randGuard) generator.guard = finder.FindRandomTexture(folders["guards"]);
+                if (randHandle) generator.handle = finder.FindRandomTexture(folders["handles"]);
                 generator.Generate(randBladeHue, randGuardHue, randHandleHue); // this is where the magic happens.
                 generator.SaveTexture();
             }
@@ -93,7 +99,6 @@ namespace Cheezegami {
                 Display.AddTexture(generator.destTex, 10);
 
             }
-            base.OnGUI();
         }
     }
 }
